@@ -346,6 +346,9 @@ int pow_matrix(matrix *result, matrix *mat, int pow)
             return -1;
         }
         int mul_pass = mul_matrix(result, last_result, last_result);
+        if (mul_pass != 0) {
+            return -1;
+        }
         deallocate_matrix(last_result);
     } else {
         matrix* last_result = (matrix*) malloc(sizeof(matrix));
@@ -354,6 +357,9 @@ int pow_matrix(matrix *result, matrix *mat, int pow)
             return -1;
         }
         int mul_pass = mul_matrix(result, last_result, mat);
+        if (mul_pass != 0) {
+            return -1;
+        }
         deallocate_matrix(last_result);
     }
     return 0;
